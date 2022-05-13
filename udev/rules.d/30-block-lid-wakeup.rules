@@ -1,0 +1,1 @@
+SUBSYSTEM=="platform", KERNEL=="INT33D6:00", DRIVER=="intel-vbtn", ATTR{power/wakeup}="disabled"
