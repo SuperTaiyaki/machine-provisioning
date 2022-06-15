@@ -1,1 +1,2 @@
+# Disable wake from sleep when the keyboard is attached or detached
 SUBSYSTEM=="platform", KERNEL=="INT33D6:00", DRIVER=="intel-vbtn", ATTR{power/wakeup}="disabled"
