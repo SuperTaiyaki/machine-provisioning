@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# Dumb script to bump the backlight up or down (mostly for easy key binds)
+# Roughly exponential curve but needs some tuning at higher levels
+
+current = open("/sys/class/backlight/intel_backlight/brightness") {|f| f.read.chomp.to_i }
+
+max = open("/sys/class/backlight/intel_backlight/max_brightness") {|f| f.read.chomp.to_i }
+
+log = Math.log(current)
+
+STEP = 0.3
+
+if ARGV[0] == "up"
+  increment = STEP
+elsif ARGV[0] == "down"
+  increment = STEP * -1
+else
+  print "Backlight: #{current}"
+  exit 0
+end
+
+adjust = Math.exp(Math.log(current) + increment).to_i
+adjust = max if adjust > max
+adjust = 0 if adjust < 0
+adjust += 1 if ARGV[0] == "up" && adjust == current
+
+# CRAP how to write it back.... how the heck does xfce do it?
+# Privileged program somewhere to do nothing but that...?
+# udev?
+
+print "Change to #{adjust}\n"
+
+current = open("/sys/class/backlight/intel_backlight/brightness", "w") {|f| f.write(adjust) }
+

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Dumb script to flip video outputs at a keypress.
+# Displays are internal (eDP1, 14" 2560x1440) and external (DP2, 27", also 2560x1440)
+# DPI needs to be changed as the internal display is HiDPI
+
+# To external
+function output_external() {
+echo 'Xft.dpi: 96' | xrdb -merge -
+xrandr --output DP2 --auto
+xrandr --output eDP1 --off
+}
+
+function output_internal() {
+echo 'Xft.dpi: 192' | xrdb -merge -
+xrandr --output DP2 --off
+xrandr --output eDP1 --auto
+}
+
+# Judgement: if DP2 is connected, flip
+# If DP2 is missing, reset internal
+# grep DP2 connected'
+# actually 'grep connected' is kind of interesting...
+# --listactivemonitors is maybe sort of handy
+
+# jeremyc@fourecks:~/bin] $ xrandr --listmonitors
+# Monitors: 1
+#  0: +DP2 2560/600x1440/340+0+0  DP2
+
+if xrandr | grep -q 'DP2 connected'
+then
+    if xrandr --listactivemonitors | grep -q DP2
+    then
+        echo "Switching to external"
+        output_internal
+    else
+        echo "Switching to internal"
+        output_external
+    fi
+else
+    echo "Monitor disconnected; configuring internal."
+    output_internal
+fi
+
+# TODO: if both are turned on, kill internal first!
