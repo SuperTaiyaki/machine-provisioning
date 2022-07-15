@@ -1,0 +1,4 @@
++ 
+# timeout is minimum 10, actually
+auth            sufficient      pam_fprintd.so max-tries=1 timeout=4
+

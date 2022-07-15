@@ -1,2 +1,4 @@
+#!location /etc/udev/rules.d
+#!profile x1t
 # Bluetooth lags for a bit if the radio goes into low power mode. Super annoying!
 ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0a2b", ATTR{power/autosuspend}="60000"

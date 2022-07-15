@@ -1,3 +1,5 @@
+#!location /etc/udev/rules.d
+#!profile laptop
 # no idea which is used, just set them all
 # sleep 1 is because the battery attrs take a moment to appear.
 ACTION=="add", SUBSYSTEM=="power_supply", KERNEL=="BAT0", PROGRAM=="/etc/udev/sleep1", ATTR{charge_stop_threshold}="80"

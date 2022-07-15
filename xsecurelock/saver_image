@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# !profile all
+# !location /usr/lib/xsecurelock
+
+: ${XSECURELOCK_IMAGE_PATH:=$HOME/Pictures}
+
+/usr/bin/feh --window-id="${XSCREENSAVER_WINDOW}" "${XSECURELOCK_IMAGE_PATH}"
+
