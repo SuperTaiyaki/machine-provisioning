@@ -1,0 +1,7 @@
+[user]
+    email = git@jeremyc.f-m.fm
+    name = Jeremy Chin
+[init]
+    defaultBranch = main
+
+# CRAP need graphlog back...
