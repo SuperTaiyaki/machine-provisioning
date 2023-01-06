@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Install casks
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+      ignore_errors: yes
+      with_items:
+        - alacritty
+        - qutebrowser
+        - nvim
+        - iterm2
+        - vivaldi
+
+
+
+    - name: "Install homebrew packages"
+      community.general.homebrew:
+        name: [
+          'coreutils',
+          'curl',
+          'imagemagick@6',
+          'openssl' ,
+          'pkg-config',
+          'readline',
+          'tmux',
+          'unzip',
+          'xz',
+        ]
+        state: present
+        update_homebrew: no
+
