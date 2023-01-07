@@ -9,7 +9,6 @@
       with_items:
         - alacritty
         - qutebrowser
-        - nvim
         - iterm2
         - vivaldi
 
@@ -27,6 +26,9 @@
           'tmux',
           'unzip',
           'xz',
+          'gnu-sed',
+          'nvim'
+          
         ]
         state: present
         update_homebrew: no
