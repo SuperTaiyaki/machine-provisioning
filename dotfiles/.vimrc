@@ -7,7 +7,15 @@ set t_Co=256
 
 set sw=4 ts=4 et
 
+" can use zz to re-center manually too
+set scrolloff=5
+
+" vim-buftabline plugin
+let buftabline_numbers=1
+
 " jj instead of escape! Cursor feels a little weird after typing a j though
 " (it lags for a character in case the second j shows up)
 inoremap jj <ESC>
+
+" Kind of want something to for 10x^e and 10x^y but ehh
 
