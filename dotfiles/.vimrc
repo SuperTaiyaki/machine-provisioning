@@ -13,6 +13,9 @@ set scrolloff=5
 " vim-buftabline plugin
 let buftabline_numbers=1
 
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+
 " jj instead of escape! Cursor feels a little weird after typing a j though
 " (it lags for a character in case the second j shows up)
 inoremap jj <ESC>
